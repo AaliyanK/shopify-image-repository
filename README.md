@@ -1,5 +1,4 @@
-# shopify-image-repository
-Winter 2022 Shopify Developer Intern Challenge: Build an Image Repository
+# Winter 2022 Shopify Developer Intern Challenge: Build an Image Repositoryy
 
 Hello Shopify! My name is Aaliyan Kapadia and this is my repo for the Developer Image Repository Project!
 
