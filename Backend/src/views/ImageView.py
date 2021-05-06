@@ -58,7 +58,6 @@ def image_view(current_user):
 @Auth.auth_required
 def image_delete(current_user,image_id):
     req = request.get_json()
-    print(req['image_url'])
     
     # Delete from S3
     # Init AWS S3 client
