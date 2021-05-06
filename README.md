@@ -13,7 +13,9 @@ Finally, I created this project over two weeks by referring to multiple tutorial
 1. Create an AWS account and set up the IAM access key and secret access key
 2. Create a publicly accessible bucket ex: 
 
-![bucket](https://user-images.githubusercontent.com/48164949/117222841-6beb7180-adda-11eb-8231-ac7eefe9e012.png)
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/48164949/117222841-6beb7180-adda-11eb-8231-ac7eefe9e012.png">
+</p>
 
 4. You must have Postgres server running locally, note the database URI ex: "postgresql://user:password@localhost:5432/image_repository" where image_repository is the database name
 5. To start the frontend: `npm start`
@@ -26,14 +28,18 @@ Finally, I created this project over two weeks by referring to multiple tutorial
   - `set AWS_SECRET_ACCESS_KEY = mENEBUrSG8bf****`
 9. Note that the environment variables you set will be different based on your database URI and IAM credentials, I added mines as an example. Also, as I am not deploying this project to production, the app will be using Dev environment configs:
 
-![dev](https://user-images.githubusercontent.com/48164949/117223042-d13f6280-adda-11eb-834e-ed8404c7eb54.png)
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/48164949/117223042-d13f6280-adda-11eb-834e-ed8404c7eb54.png">
+</p>
 
 10. To setup the database locally from the schema:
   - `python manage.py db init`
   - `python manage.py db migrate`
   - `python manage.py db upgrade`
 
- ![Picture2](https://user-images.githubusercontent.com/48164949/117223226-38f5ad80-addb-11eb-9685-2b9a67cf6c74.png)
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/48164949/117223226-38f5ad80-addb-11eb-9685-2b9a67cf6c74.png">
+</p>
  
  We should see the **users** and **images** tables pop up on Postgres or PGadmin
 
@@ -42,39 +48,61 @@ Finally, I created this project over two weeks by referring to multiple tutorial
 # A Complete Application Tour
 The first page we see is the Register page. 
 
-![REGISTER](https://user-images.githubusercontent.com/48164949/117223383-7fe3a300-addb-11eb-94bf-58415a34b3e5.png)
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/48164949/117223383-7fe3a300-addb-11eb-94bf-58415a34b3e5.png">
+</p>
 
 Enter an email and confirm your password. The details will be sent as a POST request to a Flask endpoint. The API will check to see if it has recieved an email and password (otherwise send a 400 status code: Valid JSON properties required) and if the user exists in the database already (send a 400 status code). If these checks are not met, the frontend will display error messages like: "your account already exists", "please enter a valid email/password", or "passwords do not match". If all the checks are passed in the backend, the user data is saved to the "user" table in the database with a hash password as we do not want to see the users password. 
 
-![register_db](https://user-images.githubusercontent.com/48164949/117223427-a1448f00-addb-11eb-8658-a65c3f82854b.png)
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/48164949/117223427-a1448f00-addb-11eb-8658-a65c3f82854b.png">
+</p>
 
 Once the operation is complete, a success message will be returned (200 status code) and you will be redirected to the login page
 
-![success_reg](https://user-images.githubusercontent.com/48164949/117223454-b4eff580-addb-11eb-924e-c8f81ff8b209.png)
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/48164949/117223454-b4eff580-addb-11eb-924e-c8f81ff8b209.png">
+</p>
 
 You can now log in! Once the submit button is clicked, a GET request is sent with the email and password as "query params". The backend will check if the user exists in the DB and if the password is correct with a hash function. If the checks pass, a JWT token is generated and returned to the frontend. This token will be sent as a header to every request and then authenticated at every endpoint.
 
-![JWT](https://user-images.githubusercontent.com/48164949/117223693-36478800-addc-11eb-954f-5a57dda4a320.png)
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/48164949/117223693-36478800-addc-11eb-954f-5a57dda4a320.png">
+</p>
 
-![Home](https://user-images.githubusercontent.com/48164949/117223780-6c850780-addc-11eb-944f-292b3c728009.png)
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/48164949/117223780-6c850780-addc-11eb-944f-292b3c728009.png">
+</p>
 
 You will then be directed to the home page. The home page is a private route, so you can only access it if you are logged in with a JWT token. If you decide to logout, your session token will be removed, and you will be granted a new one when relogging in. You will be redirected to the login/register page when logging out.
 
 You can now add images by clicking the button and selectign a single file. Once selected, a check will be done to make sure that the file extension is PNG or JPEG. The flask endpoint (POST request) initializes an S3 client, uploads the image to S3, and saves the user_id and image_url to the database. React will then refresh the page and will display the image on the page.
 
-![home2](https://user-images.githubusercontent.com/48164949/117224051-0cdb2c00-addd-11eb-86e7-f4aebf073a6f.png)
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/48164949/117224051-0cdb2c00-addd-11eb-86e7-f4aebf073a6f.png">
+</p>
 
-![s3](https://user-images.githubusercontent.com/48164949/117224084-1bc1de80-addd-11eb-8a0a-68f9ccf96df0.png)
-The image has been uploaded to S3.
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/48164949/117224084-1bc1de80-addd-11eb-8a0a-68f9ccf96df0.png">
+</p>
+<p align="center">The image has been uploaded to S3.</p>
 
-![dbout](https://user-images.githubusercontent.com/48164949/117224105-29776400-addd-11eb-822c-280ca53af6c3.png)
-The user_id and image_url, which is used to display the image to the frontend.
 
-![home3](https://user-images.githubusercontent.com/48164949/117224207-53c92180-addd-11eb-9aa7-223c17d84eb9.png)
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/48164949/117224105-29776400-addd-11eb-822c-280ca53af6c3.png">
+</p>
+<p align="center"> The user_id and image_url, which is used to display the image to the frontend. </p>
+
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/48164949/117224207-53c92180-addd-11eb-9aa7-223c17d84eb9.png">
+</p>
+
 
 We can now click the delete button, which will send a DELETE request to the backend; the image will be deleted from S3 and the database.
 
 # Testing
+dssdsd
 
 # Future Improvements/features
 1. The most prominent improvement would be the frontend. I would focus on improving the image sizing, enhancing the register/login UI, and adding animations.
