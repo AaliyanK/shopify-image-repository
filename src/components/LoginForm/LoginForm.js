@@ -20,11 +20,10 @@ function LoginForm(props) {
 
     const handleSubmitClick = (e) => {
         e.preventDefault();
-        const payload={
-            "email":state.email,
-            "password":state.password,
-        }
-        axios.post('http://127.0.0.1:5000/api/v1/users/login', payload)
+        let email = state.email
+        let password = state.password
+
+        axios.get('http://127.0.0.1:5000/api/v1/users/login', {params:{email,password}})
             .then(function (response) {
                 if(response.status === 200){
                     setState(prevState => ({

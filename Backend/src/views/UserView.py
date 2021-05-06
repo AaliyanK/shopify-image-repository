@@ -37,14 +37,14 @@ def create():
     'message': 'user registered successfully',
     'jwt_token': token}), 201
 
-@user_api.route('/login', methods=['POST'])
+@user_api.route('/login', methods=['GET'])
 def login():
-  req_data = request.get_json()
+  req_data = request.args
 
   # check if JSON format is correct
   if req_data is None \
-      or 'email' not in req_data \
-      or 'password' not in req_data:
+      or req_data['email'] is '' \
+      or req_data['password'] is '':
     return jsonify({'message': 'Valid JSON properties required'}), 400
   
   user = UserModel.get_user_by_email(req_data['email'])

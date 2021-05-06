@@ -5,8 +5,16 @@
 /.pnp
 .pnp.js
 
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
 # testing
 /coverage
+
+Backend/src/__pycache__/
+*.py[cod]
 
 # production
 /build
@@ -16,6 +24,7 @@
 .env.local
 .env.development.local
 .env.test.local
+.pytest_cache
 .env.production.local
 
 npm-debug.log*

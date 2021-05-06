@@ -57,7 +57,6 @@ def image_view(current_user):
 @images_api.route('/delete/<image_id>', methods=['DELETE'])
 @Auth.auth_required
 def image_delete(current_user,image_id):
-    print(image_id)
     req = request.get_json()
     print(req['image_url'])
     
