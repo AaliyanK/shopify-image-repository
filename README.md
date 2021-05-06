@@ -1,13 +1,15 @@
 # Winter 2022 Shopify Developer Intern Challenge: Build an Image Repository
 
-Hello Shopify! My name is Aaliyan Kapadia and this is my repo for the Developer Image Repository Project! I am seeking a 4 or 8 month backend developer internship that starts in January 2022! I am a Chemical Engineering student who has self learnt software engineering principles through hundreds of hours of online certifications! I have also worked at Pepsi as a Data Analyst Intern, at Pronti AI as a Backend Software Engineering Intern, and at Borealis AI as a Data Engineering Intern.
+Hello Shopify! My name is Aaliyan Kapadia and this is my repo for the Developer Image Repository Project! I am seeking a 4 or 8 month backend developer internship that starts in January 2022! 
+
+I am a Chemical Engineering student who has self learnt software engineering principles through hundreds of hours of online certifications! I have held internships at PepsiCo as a Data Analyst, at Pronti AI as a Backend Software Engineer, and at Borealis AI as a Data Engineer.
+
+This project was created over two weeks by referring to multiple tutorials, medium posts, and YouTube videos! This was a great learning experience. I hope you guys enjoy it!
 
 # How Does It Work?
 The application I have created has a React frontend, Flask backend, and utilizes a Postgres database. In the example use cases, the images are uploaded to AWS S3 in a public bucket; the public url for the image is then stored in the Postgres database. The home page then makes a GET request to continuously grab the image urls from the database. The application also has register and login functionalities, so that each user gets to view their own images in the repository. Additionally, each endpoint is authenticated with a JWT session token.
 
 The React frontend isn't the best! But I did learn a lot by creating the components from scratch and sending axios requests to the backend! I wanted to mention that although I am applying for the backend developer role, I am actively trying to learn frontend development principles to become a more effective fullstack developer. Maybe a 8 month split internship between two teams would be something to consider as well (insert eye-emoji).
-
-Finally, I created this project over two weeks by referring to multiple tutorials, medium posts, and YouTube videos! This was a great learning experience. I hope you guys enjoy it!
 
 # How Do We Set Up The Application?
 1. Create an AWS account and set up the IAM access key and secret access key
