@@ -102,10 +102,15 @@ You can now add images by clicking the button and selectign a single file. Once 
 We can now click the delete button, which will send a DELETE request to the backend; the image will be deleted from S3 and the database.
 
 # Testing
-dssdsd
+To run the tests:
+1. `cd Backend`
+2. `pytest --cov=src`
+3. We should be able to run tests for the ImageView and UserView APIs
 
 # Future Improvements/features
 1. The most prominent improvement would be the frontend. I would focus on improving the image sizing, enhancing the register/login UI, and adding animations.
 2. I would also look towards containerizing the front-end and back-end to create a production-grade workflow with travis-CI and AWS EBS for deployments. By creating dockerfiles and docker-compose we can locally test the application with ease. And with Travis-CI and AWS EBS, we can test any commits made to master and deploy the code all in one workflow.
 3. Better testing! I have not had much experience with testing, but it is an important principle, applying more tests to the APIs would create a more effective workflow.
 4. We could also add another page for favourites. A user would be able to favourite an image in the repository. The schema would have to change to include a “favourite” column in the “image” table with a Boolean value, set to True if the user decides to favourite the image. The frontend could have another page where the image would be added to as a "favourites page".
+5. A better AWS S3 implementation, which is through a protected bucket instead of a public one. For the current use case, I generated public URLs for the images on S3, stored them in the DB, and accessed them through the Flask endpoint. I would look for a way to access these URLs without a public bucket.
+6. Create configs for Production and Testing environments.
