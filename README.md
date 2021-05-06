@@ -116,3 +116,4 @@ To run the tests:
 4. We could also add another page for favourites. A user would be able to favourite an image in the repository. The schema would have to change to include a “favourite” column in the “image” table with a Boolean value, set to True if the user decides to favourite the image. The frontend could have another page where the image would be added to as a "favourites page".
 5. A better AWS S3 implementation, which is through a protected bucket instead of a public one. For the current use case, I generated public URLs for the images on S3, stored them in the DB, and accessed them through the Flask endpoint. I would look for a way to access these URLs without a public bucket.
 6. Create configs for Production and Testing environments.
+7. We could also work on deleting a user, if they decide to remove their account from the application. Along with user experience, a reset password and update password functionality could also be implemented.
